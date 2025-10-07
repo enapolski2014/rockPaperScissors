@@ -55,6 +55,7 @@ Initialize those variables with a value of 0
 
 let humanScore = 0
 let computerScore = 0
+let tieCounter = 0
 
 /*
 
@@ -105,6 +106,13 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
+/*when adding game logic, also add consecutive tie counter
+if tie && tieCounter === 0, 
+tiecounter++, and say "That's 1 tie!"
+if tie && tieCounter > 0, 
+tieCounter++ and say `That's ${tieCounter} ties in a row
+if win || lose, tieCounter = 0
+*/
 
 playRound(humanSelection, computerSelection);
 console.log(humanScore, computerScore);
