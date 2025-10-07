@@ -57,61 +57,54 @@ let humanScore = 0
 let computerScore = 0
 
 /*
+
 Logic to play a single round
 Create function named playRound()
-Convert Rock, Paper, and Scissors to integers to make comparison easier
 Compare humanChoice to computerChoice
-
+Started with a number value comparison, that doesn't work
+just directly compare inputs
+if human input is paper and compIn is rock, win
+    if humIn is paper and scissors, lose
+    if humIn is paper and paper, tie
+rise and repeat for all 3
     
 */
 
 function playRound(humanChoice, computerChoice) {
-    humanToInt(humanChoice);
-    computerToInt(computerChoice);
-        function humanToInt(humanString) {
-            if (humanString === "rock") {
-                result = 0;
-                console.log(result);
-                return humanVal = result;
-            } else if (humanString === "paper") {
-                result = 1;
-                console.log(result);
-                return humanVal = result;
-            } else {
-                result = 2;
-                console.log(result);
-                return humanVal = result;
-            }
-        }
-        function computerToInt(computerString) {
-            if (computerString === "rock") {
-                result = 0;
-                console.log(result);
-                return computerVal = result;
-            } else if (computerString === "paper") {
-                result = 1;
-                console.log(result);
-                return computerVal = result;
-            } else {
-                result = 2;
-                console.log(result);
-                return computerVal = result;
-            }
-        }
-    if (humanVal < computerVal) {
-        alert("You lose! Try Again!")
-        return;
-        } else if (humanVal > computerVal) {
-        alert("You win!");  
-      return;
-        } else {
-        alert("Tie! Try again!")
-        return;
-        }
+    const win = "You win!"
+    const lose = "You lose! Try again!"
+    const tie = "Tie! Try again!"
 
+    if (humanChoice === "rock" && computerChoice === "scissors"){
+        console.log(win);
+        humanScore++;
+        return win;
+    } else if (humanChoice === "rock" && computerChoice === "paper"){
+        console.log(lose);
+        computerScore++;
+        return lose;
+    } else if (humanChoice === "paper" && computerChoice === "rock"){
+        console.log(win);
+        humanScore++;
+        return win;
+    } else if (humanChoice === "paper" && computerChoice === "scissors"){
+        console.log(lose);
+        computerScore++;
+        return lose;
+    } else if (humanChoice === "scissors" && computerChoice === "paper"){
+        console.log(win);
+        humanScore++;
+        return win;
+    } else if (humanChoice === "scissors" && computerChoice === "rock"){
+        console.log(lose);
+        computerScore++;
+        return lose;
+    } else {
+        console.log(tie);
+        return tie;
+    }
 }
-/* > and < comparisons don't work, because human rock will always lose.
-        Need more direct comparisons between rock paper and scissors.
-*/
+
 
 playRound(humanSelection, computerSelection);
+console.log(humanScore, computerScore);
