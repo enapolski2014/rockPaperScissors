@@ -53,7 +53,7 @@ function playGame() {
     let humanScore = 0
     let computerScore = 0
     let getHumanChoice = function() {
-        let input = prompt("Choose your weapon!");
+        let input = prompt("Choose your weapon! Rock, Paper, or Scissors! GOOD LUCK!");
         let human = input.toLowerCase();
     return human;
     }
@@ -108,7 +108,7 @@ function playGame() {
         let computerChoice = getComputerChoice();
         playRound(humanChoice, computerChoice);
         console.log(humanScore, computerScore);
-        console.log(humanChoice, computerChoice);
+        // console.log(humanChoice, computerChoice);
     } if (humanScore == 5) {
         alert("You win! Dominating victory!");
         return;
