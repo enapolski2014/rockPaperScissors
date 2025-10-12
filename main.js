@@ -114,5 +114,5 @@ tieCounter++ and say `That's ${tieCounter} ties in a row
 if win || lose, tieCounter = 0
 */
 
-playRound(humanSelection, computerSelection);
+// playRound(humanSelection, computerSelection);
 console.log(humanScore, computerScore);
