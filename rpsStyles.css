@@ -1,0 +1,38 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    font-size: 24;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+
+}
+
+h1{
+    flex: 1,0, auto;
+}
+
+#game {
+    padding: 10px;
+
+}
+
+button {
+    border-radius: 10px;
+    background-color: #666;
+    color: aqua;
+    margin: 10px;
+    font-size: 1.5rem;
+    padding: 15px;
+    min-width: fit-content;
+    width: 125px;
+}
+
+#output {
+    border: 2px, solid, black;
+    height: 80px;
+    width: 480px;
+    margin: 10px;
+}
