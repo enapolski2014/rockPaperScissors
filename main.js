@@ -49,14 +49,30 @@ rise and repeat for all 3
     
 */
 
+//WILL NEED TO REWRITE MUCH OF THE GAME LOGIC TO MAKE MORE SENSE. /THIS/ SHIT IS SPAGHETTI
+
+const hChoiceBtns = document.querySelectorAll("button");
+const hSelection = document.getElementById("humanSelection");
+const cSelection = document.getElementById("compSelection");
+const score = document.getElementById("score");
+const winners = document.getElementById("result");
+
+let humanScore = 0
+let computerScore = 0
+
+
 function playGame() {
-    let humanScore = 0
-    let computerScore = 0
+
+    //changed this function to use buttons to get choices and display them
     let getHumanChoice = function() {
-        let input = prompt("Choose your weapon! Rock, Paper, or Scissors! GOOD LUCK!");
-        let human = input.toLowerCase();
-    return human;
+        hChoiceBtns.forEach((button) => {
+            button.addEventListener("click", () => {
+                hSelection.textContent = `Human selection is ${button.id}`;
+                return(button.id);
+            });
+        });
     }
+    // changed this function to use buttons to get choices and display them
     let getComputerChoice = function() {
         const start = Math.floor(Math.random() * 3);
             if (start === 0) {
@@ -66,6 +82,7 @@ function playGame() {
             } else {
             result = "scissors";
             }
+        cSelection.textContent = `Computer selection is ${result}`;
         return result;
     }
     let playRound = function playRound(humanChoice, computerChoice) {
@@ -121,10 +138,14 @@ function playGame() {
         alert("You lose! Press F5 to try again!");
     } else if (humanScore === computerScore) {
         alert("Tie! Press F5 to try again!");
-    }
+    } 
     
-}
+} 
+
+
 playGame();
+
+
 /*Game Logic:
 Scores are initialized at zero to start
 Need game to play until one player reaches 5
