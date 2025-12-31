@@ -1,3 +1,9 @@
+//temp file is here to build out new js code piece by piece. Easier to test things
+    // individually, can compare to main.js as I go, editing bits and pieces.
+    //Figured out adding the playRound() to eventListener, arguments of humanChoice and getComputerChoice
+    // to make the game play on button click. Next need to figure out how to get result to update after game.
+    //May need to rewrite logic for playRound()
+
 const hChoiceBtns = document.querySelectorAll("button");
 const hSelection = document.getElementById("humanSelection");
 const cSelection = document.getElementById("compSelection");
