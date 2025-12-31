@@ -61,7 +61,7 @@ let humanScore = 0
 let computerScore = 0
 
 
-function playGame() {
+//  function playGame() {
 
     //changed this function to use buttons to get choices and display them
     let getHumanChoice = function() {
@@ -72,7 +72,7 @@ function playGame() {
             });
         });
     }
-    // changed this function to use buttons to get choices and display them
+    // changed this function to use new consts
     let getComputerChoice = function() {
         const start = Math.floor(Math.random() * 3);
             if (start === 0) {
@@ -85,6 +85,7 @@ function playGame() {
         cSelection.textContent = `Computer selection is ${result}`;
         return result;
     }
+
     let playRound = function playRound(humanChoice, computerChoice) {
         const win = "You win!";
         const lose = "You lose! Try again!";
@@ -92,35 +93,44 @@ function playGame() {
     
         if (humanChoice === "rock" && computerChoice === "scissors") {
             console.log(win);
+            result.textContent = `Rock beats scissors, you win!`;
             humanScore++;
             return win;
         } else if (humanChoice === "rock" && computerChoice === "paper") {
             console.log(lose);
+            result.textContent = `Paper beats rock, you lose!`;
             computerScore++;
             return lose;
         } else if (humanChoice === "paper" && computerChoice === "rock") {
             console.log(win);
+            result.textContent = `Paper beats rock, you win!`;
             humanScore++;
             return win;
         } else if (humanChoice === "paper" && computerChoice === "scissors") {
             console.log(lose);
+            result.textContent = `Scissors beats paper, you lose!`;
             computerScore++;
             return lose;
         } else if (humanChoice === "scissors" && computerChoice === "paper") {
             console.log(win);
+            result.textContent = `Scissors beats paper, you win!`;
             humanScore++;
             return win;
         } else if (humanChoice === "scissors" && computerChoice === "rock") {
             console.log(lose);
+            result.textContent = `Rock beats scissors, you lose!`;
             computerScore++;
             return lose;
-        } else {
+        } else if (humanChoice === computerChoice) {
             console.log(tie);
+            result.textContent = `Tie! Try again!`;
             return tie;
         }
     }
 
-    for (let i = 0; i < 5; i++) {
+playRound(getHumanChoice(), getComputerChoice());
+
+/*    for (let i = 0; i < 5; i++) {
         let humanChoice = getHumanChoice();
         let computerChoice = getComputerChoice();
         playRound(humanChoice, computerChoice);
@@ -138,12 +148,12 @@ function playGame() {
         alert("You lose! Press F5 to try again!");
     } else if (humanScore === computerScore) {
         alert("Tie! Press F5 to try again!");
-    } 
+    } */
     
-} 
+// } 
 
 
-playGame();
+// playGame();
 
 
 /*Game Logic:
