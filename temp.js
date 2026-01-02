@@ -1,50 +1,97 @@
-//temp file is here to build out new js code piece by piece. Easier to test things
-    // individually, can compare to main.js as I go, editing bits and pieces.
-    //Figured out adding the playRound() to eventListener, arguments of humanChoice and getComputerChoice
-    // to make the game play on button click. Next need to figure out how to get result to update after game.
-    //May need to rewrite logic for playRound()
+// Got almost all game logic working, just need to get a score of 5 for either player to 
+    // remove the event listeners on the player choice buttons, or remove the buttons.
+    // The reset button then needs to either add the event listener back or add the buttons back
+    // 
 
-const hChoiceBtns = document.querySelectorAll("button");
+let hChoiceBtns = document.querySelectorAll("button.hButton");
 const hSelection = document.getElementById("humanSelection");
 const cSelection = document.getElementById("compSelection");
 const score = document.getElementById("score");
 const winners = document.getElementById("result");
+const game = document.getElementById("game");
 
 let humanScore = 0;
 let computerScore = 0;
 let roundCount = 0;
 
-score.textContent = `The score is Human: ${humanScore} to Computer: ${computerScore}`;
+
 
 let humanChoice = "";
 let computerChoice = "";
 
-hChoiceBtns.forEach((button) => {
-    button.addEventListener("click", () => {
-        humanChoice = button.id;
-        getComputerChoice();
-        playRound(humanChoice, computerChoice);
-        hSelection.textContent = `Human wields ${button.id}`;
-        score.textContent = `The score is Human: ${humanScore =+ humanScore} to Computer: ${computerScore =+ computerScore}`;
-        playGame();
+score.textContent = "Click Start to begin the game!";
+
+
+let startButton = document.getElementById('start');
+    start.addEventListener("click", () => {
+        play();
+        score.textContent = `The score is Human: ${humanScore} to Computer: ${computerScore}`;
+        startButton.remove();
+});
+
+
+
+function play() {
+    hChoiceBtns.forEach((button) => {
+        button.addEventListener("click", () => {
+            humanChoice = button.id;
+            getComputerChoice();
+            playRound(humanChoice, computerChoice);
+            playGame();
+            hSelection.textContent = `Human wields ${button.id}`;
+            score.textContent = `The score is Human: ${humanScore =+ humanScore} to Computer: ${computerScore =+ computerScore}`;
         });
     });
+}
 
-let playGame = function() {
-    if (humanScore == 5) {
+
+
+function playGame() {
+
+    if (humanScore === 5) {
+        let container = document.getElementById('btnContainer');
+        container.remove();
+        score.style.fontSize = "1.6rem";
         score.textContent = 'Human score is 5! You win!';
-        winners.textContent = 'Choose your weapon to start again';
-        humanScore = 0;
-        computerScore = 0;
-    } else if (computerScore == 5) {
+        winners.style.fontSize = "1.6rem";
+        winners.textContent = 'Press reset to start again!';
+        reset();
+    } else if (computerScore === 5) {
+        let container = document.getElementById('btnContainer');
+        container.remove();
+        score.style.fontSize = "1.6rem";
         score.textContent = 'Computer score is 5! Computer wins!';
-        winners.textContent = 'Choose your weapon to start again';
-        humanScore = 0;
-        computerScore = 0;
+        winners.style.fontSize = "1.6rem";
+        winners.textContent = 'Press reset to start again!';
+        reset();
     } else {
         return
     }
 };
+
+
+
+function reset() {
+    let reset = document.createElement("button");
+    reset.textContent = "Reset";
+    game.appendChild(reset);
+
+    reset.addEventListener("click", () => {
+        humanScore = 0;
+        computerScore = 0;
+        score.textContent = `The score is Human: ${humanScore} to Computer: ${computerScore}`;
+        score.style.fontSize = "1rem";
+        hSelection.textContent = '';
+        cSelection.textContent = '';
+        winners.textContent = '';
+        winners.style.fontSize = "1rem";
+        game.removeChild(reset);
+
+    });
+    play();
+    return;
+};
+    
 
 
 let getComputerChoice = function() {
@@ -89,7 +136,6 @@ let playRound = function playRound(hum, comp) {
         console.log(lose);
         winners.textContent = 'You lose, try again!';
         computerScore++;
-
         return lose;
     }
 };
