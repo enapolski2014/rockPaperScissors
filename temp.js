@@ -16,12 +16,16 @@ let computerScore = 0;
 score.textContent = `The score is Human: ${humanScore} to Computer: ${computerScore}`;
 
 let humanChoice = "";
+let computerChoice = "";
 
 hChoiceBtns.forEach((button) => {
     button.addEventListener("click", () => {
         humanChoice = button.id;
-        playRound(humanChoice, getComputerChoice());
-        hSelection.textContent = `Human selection is ${button.id}`;
+        getComputerChoice();
+        playRound(humanChoice, computerChoice);
+        hSelection.textContent = `Human wields ${button.id}`;
+        score.textContent = `The score is Human: ${humanScore =+ humanScore} to Computer: ${computerScore =+ computerScore}`;
+
     });
 });
 
@@ -36,16 +40,47 @@ let getComputerChoice = function() {
         } else {
         result = "scissors";
         }
-    cSelection.textContent = `Computer selection is ${result}`;
+        computerChoice = result;
+    cSelection.textContent = `Computer wields ${result}`;
     return result;
 }
 
-let playRound = function playRound(humanChoice, computerChoice) {
+let playRound = function playRound(hum, comp) {
     const win = "You win!";
     const lose = "You lose! Try again!";
     const tie = "Tie! Try again!";
 
-    if (humanChoice === "rock" && computerChoice === "scissors") {
+    if (hum === comp) {
+        console.log(tie);
+        winners.textContent = `Tie! Try again!`;
+        return tie;
+    } else if (hum === 'rock' && comp === 'scissors') {
+        console.log(win);
+        winners.textContent = 'You win!';
+        humanScore++;
+        return win;
+    } else if (hum === 'paper' && comp === 'rock') {
+        console.log(win);
+        winners.textContent = 'You win!';
+        humanScore++;
+        return win;
+    } else if (hum === 'scissors' && comp === 'paper') {
+        console.log(win);
+        winners.textContent = 'You win!';
+        humanScore++;
+        return win;
+    } else {
+        console.log(lose);
+        winners.textContent = 'You lose, try again!';
+        computerScore++;
+
+        return lose;
+    }
+};
+
+    
+
+    /*if (humanChoice === "rock" && computerChoice === "scissors") {
         console.log(win);
         result.textContent = `Rock beats scissors, you win!`;
         humanScore++;
@@ -82,4 +117,4 @@ let playRound = function playRound(humanChoice, computerChoice) {
     }
 }
 
-playRound();
+playRound(); */
