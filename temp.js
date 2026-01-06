@@ -31,7 +31,9 @@ let startButton = document.getElementById('start');
 
 
 
-function play() {
+
+
+/*function play() {
     hChoiceBtns.forEach((button) => {
         button.addEventListener("click", () => {
             humanChoice = button.id;
@@ -43,7 +45,7 @@ function play() {
         });
     });
 }
-
+*/
 
 
 function playGame() {
