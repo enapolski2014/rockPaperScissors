@@ -2,8 +2,8 @@
     // remove the event listeners on the player choice buttons, or remove the buttons.
     // The reset button then needs to either add the event listener back or add the buttons back
     // 
-
-let hChoiceBtns = document.querySelectorAll("button.hButton");
+const btnContainer = document.querySelectorAll(".btnContainer");
+let hChoiceBtns = document.querySelectorAll(".hButton");
 const hSelection = document.getElementById("humanSelection");
 const cSelection = document.getElementById("compSelection");
 const score = document.getElementById("score");
@@ -32,23 +32,24 @@ let startButton = document.getElementById('start');
 
 
 
+
+
 function play() {
-    hChoiceBtns.forEach((button) => {
-        button.addEventListener("click", function game() {
-            humanChoice = button.id;
+    btnContainer.forEach((button) => {
+        button.addEventListener("click", function game(e) {
+            humanChoice = e.target.id;
             getComputerChoice();
             playRound(humanChoice, computerChoice);
             playGame();
-            hSelection.textContent = `Human wields ${button.id}`;
+            roundCount++;
+            hSelection.textContent = `Human wields ${e.target.id}`;
             score.textContent = `The score is Human: ${humanScore =+ humanScore} to Computer: ${computerScore =+ computerScore}`;
-            // The below code works to remove event listener but only for the button clicked
-            //  that causes the win state or for buttons clicked after the win state is 
-            //      achieved. Gotta find a way to make it get rid of all event listeners
-            //          on all buttons once win state is achieved.
+            // // The below code works to remove event listener but only for the button clicked
+            // //  that causes the win state or for buttons clicked after the win state is 
+            // //      achieved. Gotta find a way to make it get rid of all event listeners
+            // //          on all buttons once win state is achieved.
             if (humanScore >= 5 || computerScore >= 5) {
-                hChoiceBtns.forEach((btn) => {
-                    btn.removeEventListener("click", game);
-                });
+                button.removeEventListener("click", game);
             };
         });
     });
