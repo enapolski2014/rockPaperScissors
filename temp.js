@@ -31,7 +31,12 @@ let startButton = document.getElementById('start');
 });
 
 
-
+//figured out how to kill eventListeners on the whole group of hChoice buttons.
+//  event delegation from the parent div "btnContainer" can add the listener to all the buttons,
+//  and then use the element target id to update the hChoice. Event listener can then be 
+//  removed totally because you only need to remove one event listener, not multiple
+//  in the case of using forEach to add event listeners to each individual button.
+// WOO!
 
 
 function play() {
