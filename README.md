@@ -2,7 +2,7 @@
 Rock Paper Scissors project from Odin Project
 
 
-pseudo logic for killing human choice buttons after win
+Created a rock paper scissors game as part of a project for the Odin Project.
 
-start game, runs play(). Plays a round with playRound(), and checks for win state with 
-    playGame(). playGame() checks if the score is 5 for either player, if it is, remove event listener for buttons. 
+In the revisiting rock paper scissors lesson, added a UI and the javascript necessary 
+    to run it with buttons.
